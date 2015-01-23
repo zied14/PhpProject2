@@ -226,35 +226,25 @@ $getfield = '?screen_name=iagdotme&count=20';
  
 $twitter = new TwitterOAuth($oauth_access_token ,$oauth_access_token_secret, $consumer_key,$consumer_secret);
 $user = $twitter->get("account/verify_credentials");
+echo '<b>photos de profil</b><br>';
+echo '<img src="'.$user->profile_image_url.'"/>';
+echo '<br>';
+echo '<b>Nom</b><br>';
+print_r($user->name);
 
+echo '<br><b>date de creation</b><br>';
+print_r($user->created_at);
+echo '<br>';
+echo '<b>ID</b><br>';
+print_r($user->id_str);
+echo '<br><b>Nombre des amis</b><br>';
+print_r($user->friends_count);
+
+
+echo '<br>';echo '<br>';echo '<br>';
+echo '<b>vous trouvez le reste des informations :</b><br>';
+echo '<br>';
 print_r($user);
-
 ?>
-    $user = $connection->get("account/verify_credentials");
-</pre>
-
-<b>Response <span class="label label-info">Live</span></b>
-<br>
-<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#profile-response" aria-expanded="false" aria-controls="profile-response">View response</button>
-
-<pre class="collapse" id="profile-response">
-{{ dump(user) }}
-</pre>
-
-<p>You now have the authenticated user's Twitter account details.</p>
-
-<div class="media">
-    <a class="media-left" href="https://twitter.com/{{ user.screen_name }}">
-        <img src="{{ user.profile_image_url_https }}" alt="..." class="img-rounded">
-    </a>
-    <div class="media-body">
-        <h4 class="media-heading"><a href="https://twitter.com/{{ user.screen_name }}">{{ user.name }} <small>@{{ user.screen_name }}</small></a></h4>
-        {% if user.status %}
-            {{ user.status.text }}
-        {% else %}
-            {{ user.description }}
-        {% endif %}
-    </div>
-</div>
 </body>
 </html>
