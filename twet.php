@@ -207,34 +207,16 @@
 </head>
 <body>
 
-<hgroup>
-            <h1>Informations concernant le compte twitter</h1>
-          </hgroup><?php
-	function tweet($message) {
-	require 'TwitterOAuth.php';
+<h1>Ma premiere application cloud computing</h1>
+          </hgroup>
+
+
+        <div class="row">
+          <section class='col-xs-12 col-sm-6 col-md-6'>
+            <section>
+              <h2>envoi des tweets</h2>
+               <?php
 	
-    $oauth_access_token = "wlUluWjPLVoYEad8tOBpUKgvS";
-    $oauth_access_token_secret = "KxNDxpORyoXF6rA0CiO4iSGu5A7VV7VwIpJ2uekEbps6Vuvy0K";
-    $consumer_key = "2992512779-ygIQNvUptmz0bDdKbhEsx3dlbh7QSNCJiy4NKxX";
-    $consumer_secret = "lVHUjTqdzkMLLy4kcsYiJmStZJoiqcNNvWgnPIgTcjGWZ";
-
-$tmhOAuth= new TwitterOAuth($oauth_access_token ,$oauth_access_token_secret, $consumer_key,$consumer_secret);
-	$tmhOAuth->oAuthRequest('POST', $tmhOAuth->url('1.1/statuses/update'), array (
-		'status' => utf8_encode ($message)
-	));
-
-	if ($tmhOAuth->response['code'] == 200) {
-	// En cours de dév, afficher les informations retournées :
-	//  $tmhOAuth->pr(json_decode($tmhOAuth->response['response']));
-		return TRUE;
-		echo 'yes';
-	} else {
-	// En cours de dév, afficher les informations retournées :
-	//  $tmhOAuth->pr(htmlentities($tmhOAuth->response['response']));
-		return FALSE;
-		echo 'nnn';
-	}
-}
 require_once('TwitterOAuth.php');
 /** Set access tokens here - see: https://dev.twitter.com/apps/ **/
 
@@ -243,40 +225,15 @@ require_once('TwitterOAuth.php');
     $consumer_key = "2992512779-ygIQNvUptmz0bDdKbhEsx3dlbh7QSNCJiy4NKxX";
     $consumer_secret = "lVHUjTqdzkMLLy4kcsYiJmStZJoiqcNNvWgnPIgTcjGWZ";
 
-$url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
- 
-$requestMethod = "GET";
- 
-$getfield = '?screen_name=iagdotme&count=20';
- 
+
 $twitter = new TwitterOAuth($oauth_access_token ,$oauth_access_token_secret, $consumer_key,$consumer_secret);
-$user = $twitter->get("account/verify_credentials");
-echo '<b>photos de profil</b><br>';
-echo '<img src="'.$user->profile_image_url.'"/>';
-echo '<br>';
-echo '<b>Nom</b><br>';
-print_r($user->name);
-
-echo '<br><b>date de creation</b><br>';
-print_r($user->created_at);
-echo '<br>';
-echo '<b>ID</b><br>';
-print_r($user->id_str);
-echo '<br><b>Nombre des amis</b><br>';
-print_r($user->friends_count);
 
 
-
-echo "</pre><br /><hr />";
-echo '<br>';echo '<br>';echo '<br>';
-echo '<b>vous trouvez le reste des informations :</b><br>';
-echo '<br>';
-print_r($user);
-
- $message = "J'envoie des tweets grâce à mon application. Je suis un #codeur !!";
+  $message = "J'envoie des tweets grâce à mon application. Je suis un #codeur !!";
   $parameters = array('status' => $message);
   // Envoi du tweet
   $status = $twitter->post('statuses/update', $parameters);
+  echo 'votre tweets a été ajouté avec succes :)';
 ?>
 </body>
 </html>
