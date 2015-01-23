@@ -230,5 +230,31 @@ $user = $twitter->get("account/verify_credentials");
 print_r($user);
 
 ?>
+    $user = $connection->get("account/verify_credentials");
+</pre>
+
+<b>Response <span class="label label-info">Live</span></b>
+<br>
+<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#profile-response" aria-expanded="false" aria-controls="profile-response">View response</button>
+
+<pre class="collapse" id="profile-response">
+{{ dump(user) }}
+</pre>
+
+<p>You now have the authenticated user's Twitter account details.</p>
+
+<div class="media">
+    <a class="media-left" href="https://twitter.com/{{ user.screen_name }}">
+        <img src="{{ user.profile_image_url_https }}" alt="..." class="img-rounded">
+    </a>
+    <div class="media-body">
+        <h4 class="media-heading"><a href="https://twitter.com/{{ user.screen_name }}">{{ user.name }} <small>@{{ user.screen_name }}</small></a></h4>
+        {% if user.status %}
+            {{ user.status.text }}
+        {% else %}
+            {{ user.description }}
+        {% endif %}
+    </div>
+</div>
 </body>
 </html>
