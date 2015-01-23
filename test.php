@@ -226,24 +226,7 @@ $getfield = '?screen_name=iagdotme&count=20';
  
 $twitter = new TwitterOAuth($oauth_access_token ,$oauth_access_token_secret, $consumer_key,$consumer_secret);
 $user = $twitter->get("account/verify_credentials");
-echo '<b>photos de profil</b><br>';
-echo '<img src="'.$user->profile_image_url.'"/>';
-echo '<br>';
-echo '<b>Nom</b><br>';
-print_r($user->name);
 
-echo '<br><b>date de creation</b><br>';
-print_r($user->created_at);
-echo '<br>';
-echo '<b>ID</b><br>';
-print_r($user->id_str);
-echo '<br><b>Nombre des amis</b><br>';
-print_r($user->friends_count);
-
-
-echo '<br>';echo '<br>';echo '<br>';
-echo '<b>vous trouvez le reste des informations :</b><br>';
-echo '<br>';
 print_r($user);
 ?>
 </body>

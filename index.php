@@ -227,6 +227,15 @@
         <button type="submit" >consulter les details du compte</button>
 
 </form>
+<br>
+<br>
+<form name="x" action="twet.php" method="post">
+
+
+
+        <button type="submit" >Envoyer des tweets</button>
+
+</form>
           </section>
         </div>
 </form>
